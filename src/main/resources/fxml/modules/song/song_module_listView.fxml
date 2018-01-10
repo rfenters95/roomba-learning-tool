@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="600.0" styleClass="root-container" stylesheets="@../../../css/test.css"
+      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.song.SongModuleController">
+    <children>
+        <BorderPane>
+            <right>
+                <HBox styleClass="module-controls" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#handleInfoButtonAction" styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView id="info" glyphName="INFORMATION_OUTLINE" size="42"/>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handlePlayButtonAction" styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView id="play" glyphName="PLAY" size="42"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </right>
+            <left>
+                <Label styleClass="h1-font" text="Song Module" BorderPane.alignment="CENTER"/>
+            </left>
+        </BorderPane>
+        <Separator prefWidth="200.0"/>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Preferences">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label styleClass="h2-font" text="Preferences"/>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Select song number"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <ComboBox fx:id="songNumberComboBox" prefWidth="150.0"
+                                                  BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Select preview song number"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <ComboBox fx:id="songPreviewNumberComboBox" prefWidth="150.0"
+                                                  BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                            </children>
+                            <styleClass>
+                                <String fx:value="inner-root-container"/>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Song Composition">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label styleClass="h2-font" text="Song Composition"/>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <HBox alignment="CENTER" styleClass="small-module-controls">
+                                            <children>
+                                                <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                        minWidth="-Infinity" mnemonicParsing="false"
+                                                        onAction="#handleNoteEditorPreviewButtonAction"
+                                                        styleClass="small-icon-button">
+                                                    <graphic>
+                                                        <MaterialDesignIconView glyphName="VOLUME_HIGH"
+                                                                                styleClass="default-icon-fill-color"/>
+                                                    </graphic>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#handleAddNoteButtonAction"
+                                                        styleClass="small-icon-button">
+                                                    <graphic>
+                                                        <MaterialDesignIconView id="play" glyphName="PLUS" size="42"/>
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indented-level-1"
+                                                    HBox.hgrow="ALWAYS">
+                                            <left>
+                                                <Label styleClass="normal-font" text="Note"
+                                                       BorderPane.alignment="CENTER"/>
+                                            </left>
+                                            <right>
+                                                <ComboBox fx:id="noteComboBox" prefWidth="150.0"
+                                                          BorderPane.alignment="CENTER"/>
+                                            </right>
+                                        </BorderPane>
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indented-level-1"
+                                                    HBox.hgrow="ALWAYS">
+                                            <left>
+                                                <Label styleClass="normal-font" text="Duration"
+                                                       BorderPane.alignment="CENTER"/>
+                                            </left>
+                                            <right>
+                                                <ComboBox fx:id="durationComboBox" prefWidth="150.0"
+                                                          BorderPane.alignment="CENTER"/>
+                                            </right>
+                                        </BorderPane>
+                                    </children>
+                                </HBox>
+                                <ListView fx:id="listView" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS"/>
+                                <BorderPane>
+                                    <right>
+                                        <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <HBox styleClass="module-controls">
+                                                    <children>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleDeleteNoteButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="DELETE"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleEditNoteButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="PENCIL"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleMoveNoteDownButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="ARROW_DOWN_BOLD"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleMoveNoteUpButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="ARROW_UP_BOLD"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handlePreviewSongNoteButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="VOLUME_HIGH"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <Label styleClass="normal-font" text="Note Controls"/>
+                                            </children>
+                                        </VBox>
+                                    </right>
+                                    <left>
+                                        <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <HBox styleClass="module-controls">
+                                                    <children>
+                                                        <Button mnemonicParsing="false"
+                                                                onAction="#handleLoadSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView id="load"
+                                                                                        glyphName="FOLDER_OUTLINE"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button mnemonicParsing="false"
+                                                                onAction="#handleSaveSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView id="save"
+                                                                                        glyphName="CONTENT_SAVE"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handlePreviewSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView glyphName="VOLUME_HIGH"
+                                                                                        styleClass="default-icon-fill-color"/>
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <Label styleClass="normal-font" text="Song Controls"/>
+                                            </children>
+                                        </VBox>
+                                    </left>
+                                </BorderPane>
+                            </children>
+                            <styleClass>
+                                <String fx:value="inner-root-container"/>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0"
+      styleClass="root-container" stylesheets="@../../../css/test.css" xmlns="http://javafx.com/javafx/8.0.111"
+      fx:controller="controllers.connection.ConnectionModuleController">
+    <children>
+        <BorderPane>
+            <left>
+                <Label maxWidth="1.7976931348623157E308" styleClass="h1-font" text="Connection Module"
+                       BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="module-controls"
+                      BorderPane.alignment="CENTER">
+                    <children>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRefreshButtonAction"
+                                styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView id="refresh" glyphName="REFRESH" size="42"/>
+                            </graphic>
+                        </Button>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRefreshButtonAction"
+                                styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView id="refresh" glyphName="REFRESH" size="42"/>
+                            </graphic>
+                        </Button>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleConnectButtonAction"
+                                styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView fx:id="connectIcon" styleClass="check"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </right>
+        </BorderPane>
+        <Separator prefWidth="200.0">
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </Separator>
+        <Label styleClass="h2-font" text="Connection Information"/>
+        <BorderPane styleClass="indented-level-1">
+            <left>
+                <Label styleClass="normal-font" text="Connection type" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+            </left>
+            <right>
+                <ComboBox fx:id="usbStartModeComboBox11" onAction="#handleUsbStartModeButtonAction" prefHeight="27.0"
+                          prefWidth="200.0" visibleRowCount="3" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+        <BorderPane styleClass="indented-level-1">
+            <left>
+                <Label styleClass="normal-font" text="Start mode" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+            </left>
+            <right>
+                <ComboBox fx:id="usbStartModeComboBox1" onAction="#handleUsbStartModeButtonAction" prefHeight="27.0"
+                          prefWidth="200.0" visibleRowCount="3" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+        <BorderPane styleClass="indented-level-1">
+            <left>
+                <Label styleClass="normal-font" text="Device" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+            </left>
+            <right>
+                <Label styleClass="normal-font" text="Not Selected" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+        <Separator prefWidth="200.0"/>
+        <TabPane fx:id="tabPane" maxHeight="350.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="USB">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Label styleClass="h3-font" text="USB Devices"/>
+                                <Label styleClass="normal-font" text="Searching..."/>
+                                <ListView fx:id="usbListView"/>
+                            </children>
+                            <styleClass>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Wifi">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Label styleClass="h3-font" text="Wifi Devices"/>
+                                <Label styleClass="normal-font" text="Searching..."/>
+                                <ListView fx:id="wifiListView"/>
+                            </children>
+                            <styleClass>
+                                <String fx:value="tab-content-container"/>
+                                <String fx:value="tab-content-bg"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

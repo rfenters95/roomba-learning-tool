@@ -1,0 +1,602 @@
+/* CSS variables
+used to easily apply consistent style
+across multiple classes or id's that
+can easily be changed if needed.
+*/
+* {
+  bg-color: #32353a;
+  module-color: #47494c;
+  roomba-green: #4eb769;
+  roomba-yellow: #fffd8c;
+}
+
+/* VBox Style Classes */
+
+/* .module-container
+this style is applied to the root
+VBox of each module FXML file in the
+application.
+*/
+.module-container {
+    -fx-spacing: 10;
+    -fx-padding: 25;
+    -fx-alignment: top-left;
+    -fx-background-color: bg-color;
+}
+
+/* .inner-module-container
+this style is applied to the inner
+VBoxs' in each module FXML file in the
+application.
+*/
+.inner-module-container {
+    -fx-spacing: 10;
+    -fx-alignment: top-left;
+    -fx-background-color: bg-color;
+}
+
+/* .module-controls
+this style is applied to the HBox
+at the top of all modules containing
+controls such as play and information.
+*/
+.module-controls {
+    -fx-spacing: 10;
+}
+
+/* .small-module-controls
+this style is applied to the HBox
+at the top of all modules containing
+controls such as play and information.
+*/
+.small-module-controls {
+    -fx-spacing: 5;
+}
+
+/* StackPane Style Classes */
+
+.left-aligned-StackPane {
+    -fx-alignment: center-left;
+}
+
+/* Label Style Classes */
+
+/* h1-font
+this style is applied to Labels
+that are considered a heading-1.
+*/
+.h1-font {
+    -fx-font-size: 32px;
+    -fx-text-fill: roomba-yellow;
+}
+
+/* h2-font
+this style is applied to Labels
+that are considered a heading-2.
+*/
+.h2-font {
+    -fx-font-size: 24px;
+    -fx-text-fill: roomba-yellow;
+}
+
+/* h3-font
+this style is applied to Labels
+that are considered a heading-3.
+*/
+.h3-font {
+    -fx-font-size: 16px;
+    -fx-text-fill: roomba-yellow;
+}
+
+/* h4-font
+this style is applied to Labels
+that are considered a heading-4.
+*/
+.h4-font {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-family: bold;
+}
+
+/* normal-font
+this style is applied to Labels
+that are considered normal text.
+*/
+.normal-font {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+/* okay-status-font
+this style is applied to Labels
+to represent a positive status.
+*/
+.okay-status-font {
+    -fx-font-size: 14px;
+    -fx-text-fill: roomba-green;
+}
+
+/* error-status-font
+this style is applied to Labels
+to represent a negative status.
+*/
+.error-status-font {
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+}
+
+.default-tab-content {
+    -fx-padding: 10;
+    -fx-background-color: module-color;
+}
+
+.border-pane-row {
+    -fx-padding: 0 0 0 25;
+    -fx-min-height: 40px;
+}
+
+/* StackPane Style Classes */
+
+.left-aligned-StackPane {
+    -fx-alignment: center-left;
+}
+
+.indent-padding {
+    -fx-padding: 0 0 0 25;
+}
+
+.indent-margin {
+    -fx-margin: 0 0 0 25;
+}
+
+.clickable-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+.clickable-label:hover {
+    -fx-text-fill: roomba-yellow;
+    -fx-underline: true;
+}
+
+.separator *.line {
+    -fx-border-style: dotted;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: grey;
+}
+
+.separator:vertical *.line {
+    -fx-border-style: dotted;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: grey;
+}
+
+/* Button Style Classes */
+
+.button {
+    -fx-color: module-color;
+    -fx-background-insets: 0;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 16px;
+    -fx-text-fill: roomba-green;
+}
+
+.button:focused {
+    -fx-text-fill: roomba-yellow;
+    -fx-focus-color: roomba-green;
+    -fx-effect: dropshadow(gaussian, roomba-green, 10, 0.0 , 0, 0);
+}
+
+.icon-button {
+    -fx-max-width: -fx-pref-width;
+    -fx-max-height: -fx-pref-width;
+    -fx-min-width: -fx-pref-width;
+    -fx-min-height: -fx-pref-width;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+}
+
+.icon-button .glyph-icon {
+    -glyph-size: 42px;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+}
+
+.small-icon-button {
+    -fx-max-width: -fx-pref-width;
+    -fx-max-height: -fx-pref-width;
+    -fx-min-width: -fx-pref-width;
+    -fx-min-height: -fx-pref-width;
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+}
+
+.small-icon-button .glyph-icon {
+    -glyph-size: 17px;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+}
+
+.default-icon-fill-color {
+    -fx-fill: roomba-yellow;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+}
+
+.power {
+    -glyph-name: "POWER";
+    -glyph-size: 42px;
+    -fx-fill: red;
+}
+
+.info {
+    -glyph-name: "INFORMATION_OUTLINE";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.play {
+    -glyph-name: "PLAY";
+    -glyph-size: 42px;
+    -fx-fill: roomba-green;
+}
+
+.test {
+    -glyph-name: "CALL_MISSED";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.check {
+    -glyph-name: "CHECK";
+    -glyph-size: 42px;
+    -fx-fill: roomba-green;
+}
+
+.close {
+    -glyph-name: "CLOSE";
+    -glyph-size: 42px;
+    -fx-fill: red;
+}
+
+.refresh {
+    -glyph-name: "REFRESH";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.plus {
+    -glyph-name: "PLUS";
+    -glyph-size: 42px;
+    -fx-fill: roomba-green;
+}
+
+.save {
+    -glyph-name: "CONTENT_SAVE";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.load {
+    -glyph-name: "FOLDER_OUTLINE";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.preview {
+    -glyph-name: "VOLUME_HIGH";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.arrow-up {
+    -glyph-name: "ARROW_UP_BOLD";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.arrow-down {
+    -glyph-name: "ARROW_DOWN_BOLD";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+.trash {
+    -glyph-name: "DELETE";
+    -glyph-size: 42px;
+    -fx-fill: roomba-yellow;
+}
+
+/* ListView Style Classes */
+
+.list-view {
+    -fx-background-color: module-color;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+}
+
+/* ListCell Style Classes */
+
+.list-view .list-cell {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+}
+
+.list-cell:even {
+    -fx-background-color: module-color;
+}
+
+.list-cell:odd {
+    -fx-background-color: rgb(40, 40, 40);
+}
+
+.list-cell:even:hover {
+    -fx-background-color: grey;
+    -fx-text-fill: module-color;
+}
+
+.list-cell:odd:hover {
+    -fx-background-color: grey;
+    -fx-text-fill: rgb(40, 40, 40);
+}
+
+.list-cell:focused {
+    -fx-background-color: roomba-green;
+}
+
+/* ComboBox Style Classes */
+
+.combo-box {
+    -fx-background-insets: 0;
+    -fx-color: module-color;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-pref-width: 175px;
+    -fx-min-height: 40px;
+}
+
+.combo-box .arrow {
+    -fx-background-color: roomba-green;
+}
+
+/* ScrollBar Style Classes */
+
+.scroll-bar {
+    -fx-background-color: rgb(40, 40, 40);
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: roomba-green;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.filler, .corner {
+    -fx-background-color: rgb(40, 40, 40);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    visibility: hidden;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    visibility: hidden;
+}
+
+/* TextField Style Classes */
+
+.text-field {
+    -fx-background-color: bg-color;
+    -fx-text-fill: white;
+    -fx-highlight-fill: roomba-green;
+    -fx-padding: 10;
+    -fx-pref-width: 175px;
+    -fx-min-height: 40px;
+    /* below can be removed */
+    /* -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-border-radius: 4; */
+}
+
+.inverted-text-field {
+    -fx-background-color: module-color;
+    -fx-text-fill: white;
+    -fx-highlight-fill: roomba-green;
+    -fx-padding: 10;
+    -fx-pref-width: 175px;
+    /* below can be removed */
+    /* -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-border-radius: 4; */
+}
+
+/* Slider Style Classes */
+
+.slider {
+    -fx-background-color: transparent;
+}
+
+.slider .thumb {
+    -fx-background-color: roomba-green;
+}
+
+.slider .track {
+    -fx-background-color: module-color;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+}
+
+/* ToolBar Style Classes */
+
+
+.tool-bar {
+    -fx-background-color: transparent;
+}
+
+/* CheckBox Style Classes */
+
+.check-box .box {
+    -fx-background-color: module-color;
+    -fx-border-color: grey;
+    -fx-border-radius: 3px; 
+}
+    
+.check-box:selected .mark { 
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: roomba-green;
+}
+
+/* TableView Style Classes */
+
+.table-view {
+    -fx-color: module-color;
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: .25;
+    -fx-border-color: roomba-yellow;
+}
+
+.table-view .label {
+    -fx-text-fill: white;
+}
+
+.table-view .arrow {
+    -fx-background-color: roomba-green;
+}
+
+.table-view .column-header {
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+}
+
+.table-view .column-header-background .label {
+    -fx-background-insets:0;
+    -fx-text-fill: roomba-yellow;
+    -fx-padding: 10;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-alignment: CENTER;
+}
+
+.table-view .table-row-cell:selected:even,
+.table-view .table-row-cell:selected:odd {
+    -fx-background-color: roomba-green;
+    -fx-table-cell-border-color: black;
+    -fx-fill: white;
+}
+
+.table-view .table-row-cell:hover:even,
+.table-view .table-row-cell:hover:odd {
+    -fx-background-color: grey;
+    -fx-table-cell-border-color: black;
+    -fx-fill: white;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: module-color;
+    -fx-fill: white;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: rgb(40, 40, 40);
+    -fx-fill: white;
+}
+
+/*.table-view .table-row-cell:selected:odd {
+    -fx-background-color: roomba-green;
+    -fx-table-cell-border-color: black;
+    -fx-fill: white;
+}*/
+
+/* Hides TableView's horizontal ScrollBar */
+.table-view .scroll-bar:horizontal .increment-arrow,
+.table-view .scroll-bar:horizontal .decrement-arrow,
+.table-view .scroll-bar:horizontal .increment-button,
+.table-view .scroll-bar:horizontal .decrement-button {
+    -fx-padding: 0;
+}
+
+/* TextArea Style Classes */
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-text-fill: white;
+    -fx-highlight-fill: roomba-green;
+    -fx-highlight-text-fill: white;
+}
+
+.text-area .content {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: module-color;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 90px;
+}
+
+.tab-pane .tab {
+    -fx-background-color: module-color;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: module-color;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: roomba-green;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.inner-tab-pane {
+    -fx-background-color: bg-color;
+}
+
+.inner-tab-pane .tab {
+    -fx-background-color: module-color;
+}
+
+.hidden-header-tab-pane {
+    -fx-tab-max-height: 0 ;
+} 
+.hidden-header-tab-pane .tab-header-area {
+    visibility: hidden ;
+}

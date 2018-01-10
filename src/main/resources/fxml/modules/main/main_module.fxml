@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="750.0" styleClass="module-container" stylesheets="@../../../css/Main.css"
+      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.main.MainModuleController">
+    <children>
+        <BorderPane>
+            <left>
+                <Label styleClass="h1-font" text="Roomba Learning Tool" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <HBox alignment="CENTER" styleClass="module-controls" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#openInformationModule"
+                                prefHeight="50.0" prefWidth="50.0">
+                            <graphic>
+                                <MaterialDesignIconView styleClass="info"/>
+                            </graphic>
+                        </Button>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#openConnectionModule"
+                                prefHeight="50.0" prefWidth="50.0">
+                            <graphic>
+                                <MaterialDesignIconView styleClass="power"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </right>
+        </BorderPane>
+        <Separator prefWidth="200.0">
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </Separator>
+        <Label styleClass="h2-font" text="Device information"/>
+        <VBox spacing="10.0">
+            <children>
+                <BorderPane>
+                    <left>
+                        <Label styleClass="normal-font" text="Status" BorderPane.alignment="CENTER"/>
+                    </left>
+                    <right>
+                        <Label fx:id="connectionStatusLabel" styleClass="error-status-font" text="Not Connected!"
+                               BorderPane.alignment="CENTER"/>
+                    </right>
+                </BorderPane>
+                <BorderPane>
+                    <left>
+                        <Label styleClass="normal-font" text="Device" BorderPane.alignment="CENTER"/>
+                    </left>
+                    <right>
+                        <Label fx:id="deviceNameLabel" styleClass="normal-font" text="N/A"
+                               BorderPane.alignment="CENTER"/>
+                    </right>
+                </BorderPane>
+                <BorderPane>
+                    <left>
+                        <Label styleClass="normal-font" text="Connection type" BorderPane.alignment="CENTER"/>
+                    </left>
+                    <right>
+                        <Label fx:id="connectionTypeLabel" styleClass="normal-font" text="N/A"
+                               BorderPane.alignment="CENTER"/>
+                    </right>
+                </BorderPane>
+                <BorderPane>
+                    <left>
+                        <Label styleClass="normal-font" text="Battery percentage" BorderPane.alignment="CENTER"/>
+                    </left>
+                    <right>
+                        <Label fx:id="batteryStatusLabel" styleClass="normal-font" text="N/A"
+                               BorderPane.alignment="CENTER"/>
+                    </right>
+                </BorderPane>
+                <BorderPane>
+                    <left>
+                        <Label styleClass="normal-font" text="Start mode" BorderPane.alignment="CENTER"/>
+                    </left>
+                    <right>
+                        <Label fx:id="startModeLabel" styleClass="normal-font" text="N/A"
+                               BorderPane.alignment="CENTER"/>
+                    </right>
+                </BorderPane>
+            </children>
+            <VBox.margin>
+                <Insets left="25.0"/>
+            </VBox.margin>
+        </VBox>
+        <Separator prefWidth="200.0"/>
+        <Label styleClass="h2-font" text="Controllers"/>
+        <HBox maxWidth="1.7976931348623157E308" minHeight="120.0" spacing="25.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button contentDisplay="TOP" graphicTextGap="15.0" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" minWidth="140.0" mnemonicParsing="false"
+                        onAction="#openDriveModule" text="Drive" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <MaterialDesignIconView glyphName="STEERING" size="42" styleClass="default-icon-fill-color"/>
+                    </graphic>
+                </Button>
+                <Button contentDisplay="TOP" graphicTextGap="15.0" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" minWidth="140.0" mnemonicParsing="false"
+                        onAction="#openLEDModule" text="LED" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <MaterialDesignIconView glyphName="LIGHTBULB_OUTLINE" size="42"
+                                                styleClass="default-icon-fill-color"/>
+                    </graphic>
+                </Button>
+                <Button contentDisplay="TOP" graphicTextGap="15.0" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" minWidth="140.0" mnemonicParsing="false"
+                        onAction="#openSensorModule" text="Sensor" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <MaterialDesignIconView glyphName="OIL_TEMPERATURE" size="42"
+                                                styleClass="default-icon-fill-color"/>
+                    </graphic>
+                </Button>
+                <Button contentDisplay="TOP" graphicTextGap="15.0" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" minWidth="140.0" mnemonicParsing="false"
+                        onAction="#openSongModule" text="Song" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="MUSIC" size="42" styleClass="default-icon-fill-color"/>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>

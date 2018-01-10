@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" styleClass="module-container" stylesheets="@../../../css/Main.css"
+      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.song.SongModuleController">
+    <children>
+        <BorderPane>
+            <right>
+                <HBox styleClass="module-controls" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#handleInfoButtonAction" styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView styleClass="info"/>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handlePlayButtonAction" styleClass="icon-button">
+                            <graphic>
+                                <MaterialDesignIconView styleClass="play"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </right>
+            <left>
+                <Label styleClass="h1-font" text="Song Module" BorderPane.alignment="CENTER"/>
+            </left>
+        </BorderPane>
+        <Separator prefWidth="200.0"/>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Preferences">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label styleClass="h2-font" text="Preferences"/>
+                                <BorderPane styleClass="indent-padding">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Select song number"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <ComboBox fx:id="songNumberComboBox" onAction="#handleSongNumberComboBox"
+                                                  prefWidth="150.0" BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                                <BorderPane styleClass="indent-padding">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Select preview song number"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <ComboBox fx:id="songPreviewNumberComboBox"
+                                                  onAction="#handleSongPreviewNumberComboBox" prefWidth="150.0"
+                                                  BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                            </children>
+                            <styleClass>
+                                <String fx:value="inner-module-container"/>
+                                <String fx:value="default-tab-content"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Song Composition">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label styleClass="h2-font" text="Song Composition"/>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <HBox alignment="CENTER" styleClass="small-module-controls">
+                                            <children>
+                                                <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                        minWidth="-Infinity" mnemonicParsing="false"
+                                                        onAction="#handleNoteEditorPreviewButtonAction"
+                                                        styleClass="small-icon-button">
+                                                    <graphic>
+                                                        <MaterialDesignIconView styleClass="preview"/>
+                                                    </graphic>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#handleAddNoteButtonAction"
+                                                        styleClass="small-icon-button">
+                                                    <graphic>
+                                                        <MaterialDesignIconView styleClass="plus"/>
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indent-padding"
+                                                    HBox.hgrow="ALWAYS">
+                                            <left>
+                                                <Label styleClass="normal-font" text="Note"
+                                                       BorderPane.alignment="CENTER">
+                                                    <BorderPane.margin>
+                                                        <Insets right="10.0"/>
+                                                    </BorderPane.margin>
+                                                </Label>
+                                            </left>
+                                            <right>
+                                                <ComboBox fx:id="noteComboBox" prefWidth="150.0"
+                                                          BorderPane.alignment="CENTER"/>
+                                            </right>
+                                        </BorderPane>
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indent-padding"
+                                                    HBox.hgrow="ALWAYS">
+                                            <left>
+                                                <Label styleClass="normal-font" text="Duration"
+                                                       BorderPane.alignment="CENTER">
+                                                    <BorderPane.margin>
+                                                        <Insets right="10.0"/>
+                                                    </BorderPane.margin>
+                                                </Label>
+                                            </left>
+                                            <right>
+                                                <ComboBox fx:id="durationComboBox" prefWidth="150.0"
+                                                          BorderPane.alignment="CENTER"/>
+                                            </right>
+                                        </BorderPane>
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="tableView" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="tableNoteNumberColumn" editable="false" prefWidth="75.0"
+                                                     resizable="false" sortable="false" text="Note #"/>
+                                        <TableColumn fx:id="tableNoteColumn" editable="false" prefWidth="75.0"
+                                                     resizable="false" sortable="false" text="Note"/>
+                                        <TableColumn fx:id="tableNoteDurationColumn" editable="false" prefWidth="75.0"
+                                                     resizable="false" sortable="false" text="Duration"/>
+                                    </columns>
+                                </TableView>
+                                <BorderPane>
+                                    <right>
+                                        <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <HBox styleClass="module-controls">
+                                                    <children>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleDeleteNoteButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="trash"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleMoveNoteDownButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="arrow-down"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handleMoveNoteUpButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="arrow-up"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handlePreviewSongNoteButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="preview"/>
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <Label styleClass="normal-font" text="Note Controls"/>
+                                            </children>
+                                        </VBox>
+                                    </right>
+                                    <left>
+                                        <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <HBox styleClass="module-controls">
+                                                    <children>
+                                                        <Button mnemonicParsing="false"
+                                                                onAction="#handleLoadSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="load"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button mnemonicParsing="false"
+                                                                onAction="#handleSaveSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="save"/>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                minHeight="-Infinity" minWidth="-Infinity"
+                                                                mnemonicParsing="false"
+                                                                onAction="#handlePreviewSongButtonAction"
+                                                                styleClass="icon-button">
+                                                            <graphic>
+                                                                <MaterialDesignIconView styleClass="preview"/>
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <Label styleClass="normal-font" text="Song Controls"/>
+                                            </children>
+                                        </VBox>
+                                    </left>
+                                </BorderPane>
+                            </children>
+                            <styleClass>
+                                <String fx:value="inner-module-container"/>
+                                <String fx:value="default-tab-content"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

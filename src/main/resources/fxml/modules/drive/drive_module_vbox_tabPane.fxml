@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="600.0" styleClass="root-container" stylesheets="@../../../css/test.css"
+      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.drive.DriveModuleController">
+    <children>
+        <BorderPane>
+            <left>
+                <Label styleClass="h1-font" text="Drive Module" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <HBox alignment="CENTER" styleClass="module-controls" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleInfoButtonAction"
+                                prefHeight="50.0" prefWidth="50.0">
+                            <graphic>
+                                <MaterialDesignIconView fill="#fffd8c" glyphName="INFORMATION_OUTLINE" size="42"/>
+                            </graphic>
+                        </Button>
+                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePlayButtonAction"
+                                prefHeight="50.0" prefWidth="50.0">
+                            <graphic>
+                                <MaterialDesignIconView fx:id="connectIcon" fill="#4eb769" glyphName="PLAY" size="42"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </right>
+        </BorderPane>
+        <Separator prefWidth="200.0"/>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Recent">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Label styleClass="h2-font" text="Recent Drive Information"/>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Distance driven"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <Label fx:id="distanceStatusLabel" styleClass="normal-font" text="N/A"
+                                               BorderPane.alignment="CENTER"/>
+                                    </right>
+                                    <VBox.margin>
+                                        <Insets right="10.0"/>
+                                    </VBox.margin>
+                                </BorderPane>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Elapsed time"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <Label fx:id="timeStatusLabel" styleClass="normal-font" text="N/A"
+                                               BorderPane.alignment="CENTER"/>
+                                    </right>
+                                    <VBox.margin>
+                                        <Insets right="10.0"/>
+                                    </VBox.margin>
+                                </BorderPane>
+                            </children>
+                            <styleClass>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Drive">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Label styleClass="h2-font" text="Drive Configuration"/>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Velocity (mm/s)"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <TextField fx:id="velocityTextField" alignment="CENTER" maxWidth="-Infinity"
+                                                   minWidth="-Infinity" prefWidth="175.0" promptText="value"
+                                                   BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Radius (mm)"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <TextField fx:id="radiusTextField" alignment="CENTER" maxWidth="-Infinity"
+                                                   minWidth="-Infinity" prefWidth="175.0" promptText="value"
+                                                   BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                            </children>
+                            <padding>
+                                <Insets top="15.0"/>
+                            </padding>
+                            <styleClass>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="DriveDirect">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Label styleClass="h2-font" text="DriveDirect Configuration"/>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Right Wheel Velocity (mm/s)"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <TextField fx:id="rightVelocityTextField" alignment="CENTER"
+                                                   maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0"
+                                                   promptText="value" BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                                <BorderPane styleClass="indented-level-1">
+                                    <left>
+                                        <Label styleClass="normal-font" text="Left Wheel Velocity (mm/s)"
+                                               BorderPane.alignment="CENTER"/>
+                                    </left>
+                                    <right>
+                                        <TextField fx:id="leftVelocityTextField" alignment="CENTER" maxWidth="-Infinity"
+                                                   minWidth="-Infinity" prefWidth="175.0" promptText="value"
+                                                   BorderPane.alignment="CENTER"/>
+                                    </right>
+                                </BorderPane>
+                            </children>
+                            <padding>
+                                <Insets top="15.0"/>
+                            </padding>
+                            <styleClass>
+                                <String fx:value="tab-content-bg"/>
+                                <String fx:value="tab-content-container"/>
+                            </styleClass>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
