@@ -20,7 +20,7 @@ public class DriveModuleController extends ModuleController implements Initializ
     private final static Logger LOGGER = Logger.getLogger(DriveModuleController.class);
 
     @FXML
-    private MaterialDesignIconView connectIcon;
+    private MaterialDesignIconView playIcon;
 
     @FXML
     private ComboBox<DriveCommand> driveCommandComboBox;
@@ -91,6 +91,7 @@ public class DriveModuleController extends ModuleController implements Initializ
                             getRoomba().drive(velocity, radius);
                             startTime = System.currentTimeMillis();
                             playing = true;
+                            toggleNodeStatus(playIcon, "play", "stop");
                         }
                         break;
                     case DriveDirect:
@@ -102,6 +103,7 @@ public class DriveModuleController extends ModuleController implements Initializ
                             getRoomba().driveDirect(rightVelocity, leftVelocity);
                             startTime = System.currentTimeMillis();
                             playing = true;
+                            toggleNodeStatus(playIcon, "play", "stop");
                         }
                         break;
                     default:
@@ -113,6 +115,7 @@ public class DriveModuleController extends ModuleController implements Initializ
                 getRoomba().updateSensors();
                 distanceStatusLabel.setText(String.valueOf(getRoomba().distanceTraveled()));
                 playing = false;
+                toggleNodeStatus(playIcon, "stop", "play");
             }
         } else {
             LOGGER.trace("DriveModuleController play action prevented! Roomba is not connected!");

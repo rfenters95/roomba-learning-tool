@@ -4,6 +4,7 @@ import controllers.ModuleController;
 import core.sensor.Sensor;
 import core.sensor.bool.*;
 import core.sensor.signal.*;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,9 @@ public class SensorModuleController extends ModuleController implements Initiali
 
     private final ArrayList<BooleanSensor> booleanSensors = new ArrayList<>();
     private final ArrayList<SignalSensor> signalSensors = new ArrayList<>();
+
+    @FXML
+    private MaterialDesignIconView iconView;
 
     @FXML
     private ComboBox<String> sensorTypeComboBox;
@@ -82,6 +86,8 @@ public class SensorModuleController extends ModuleController implements Initiali
         sensorTypeComboBox.getItems().add("Signal Sensor");
         sensorTypeComboBox.getSelectionModel().selectFirst();
 
+        showGraphLabel.setVisible(false);
+
         Callback<ListView<Sensor>, ListCell<Sensor>> callback = new Callback<ListView<Sensor>, ListCell<Sensor>>() {
             @Override
             public ListCell<Sensor> call(ListView<Sensor> param) {
@@ -131,6 +137,10 @@ public class SensorModuleController extends ModuleController implements Initiali
 
         sensorComboBox.getItems().addAll(booleanSensors);
         sensorComboBox.getSelectionModel().selectFirst();
+
+        Label placeHolder = new Label("Play Sensor Module to read sensor");
+        placeHolder.getStyleClass().add("normal-font");
+        listView.setPlaceholder(placeHolder);
     }
 
     private class SensorThread extends Thread {
@@ -143,6 +153,7 @@ public class SensorModuleController extends ModuleController implements Initiali
 
         @Override
         public void run() {
+            toggleNodeStatus(iconView, "play", "stop");
             while (isReadingSensors()) {
                 ModuleController.getRoomba().updateSensors();
                 LOGGER.debug("SensorThread updated sensors");
@@ -157,6 +168,7 @@ public class SensorModuleController extends ModuleController implements Initiali
                 }
                 LOGGER.debug("SensorThread awoken from sleep");
             }
+            toggleNodeStatus(iconView, "stop", "play");
         }
     }
 

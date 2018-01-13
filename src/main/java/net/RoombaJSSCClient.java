@@ -1,6 +1,6 @@
 package net;
 
-import com.maschel.roomba.RoombaJSSC;
+import com.maschel.roomba.RoombaJSSCClientSerial;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class RoombaJSSCClient extends RoombaJSSC {
+public class RoombaJSSCClient extends RoombaJSSCClientSerial {
 
     private final static Logger LOGGER = Logger.getLogger(RoombaJSSCClient.class);
     private Socket socket;
@@ -78,6 +78,17 @@ public class RoombaJSSCClient extends RoombaJSSC {
             printWriter.println(bytes.length);
             for (byte b : bytes) {
                 printWriter.println(b);
+            }
+            Scanner scanner = new Scanner(socket.getInputStream());
+            String nextLine = scanner.nextLine();
+            if (nextLine.equalsIgnoreCase("SEND BYTES")) {
+                nextLine = scanner.nextLine();
+                byte[] sensorData = new byte[Integer.parseInt(nextLine)];
+                for (int i = 0; i < sensorData.length; i++) {
+                    nextLine = scanner.nextLine();
+                    sensorData[i] = Byte.parseByte(nextLine);
+                }
+                setCurrentSensorData(sensorData);
             }
             return true;
         } catch (IOException e) {

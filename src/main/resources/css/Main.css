@@ -241,6 +241,12 @@ to represent a negative status.
     -fx-fill: roomba-green;
 }
 
+.stop {
+    -glyph-name: "STOP";
+    -glyph-size: 42px;
+    -fx-fill: red;
+}
+
 .test {
     -glyph-name: "CALL_MISSED";
     -glyph-size: 42px;
@@ -312,9 +318,8 @@ to represent a negative status.
 .list-view {
     -fx-background-color: module-color;
     -fx-background-insets: 0;
-    -fx-padding: 0;
-    -fx-border-color: roomba-yellow;
-    -fx-border-width: .25;
+    /*-fx-border-color: roomba-yellow;
+    -fx-border-width: .25;*/
 }
 
 /* ListCell Style Classes */
@@ -330,7 +335,7 @@ to represent a negative status.
 }
 
 .list-cell:odd {
-    -fx-background-color: rgb(40, 40, 40);
+    -fx-background-color: bg-color;
 }
 
 .list-cell:even:hover {
@@ -397,10 +402,6 @@ to represent a negative status.
     -fx-padding: 10;
     -fx-pref-width: 175px;
     -fx-min-height: 40px;
-    /* below can be removed */
-    /* -fx-border-color: roomba-yellow;
-    -fx-border-width: .25;
-    -fx-border-radius: 4; */
 }
 
 .inverted-text-field {
@@ -409,11 +410,19 @@ to represent a negative status.
     -fx-highlight-fill: roomba-green;
     -fx-padding: 10;
     -fx-pref-width: 175px;
-    /* below can be removed */
-    /* -fx-border-color: roomba-yellow;
-    -fx-border-width: .25;
-    -fx-border-radius: 4; */
 }
+
+/* In-progress */
+/*.inverted-text-field:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: red;
+    -fx-inner-border: red;
+    -fx-body-color: module-color;
+
+    -fx-background-color: -fx-faint-focus-color, -fx-focus-color, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -2, -0.3, 1, 2;
+    -fx-background-radius: 7, 6, 4, 3;
+}*/
 
 /* Slider Style Classes */
 
@@ -535,7 +544,7 @@ to represent a negative status.
 
 /* TextArea Style Classes */
 
-.text-area {
+/*.text-area {
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
@@ -550,7 +559,7 @@ to represent a negative status.
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-background-color: module-color;
-}
+}*/
 
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;
@@ -599,4 +608,12 @@ to represent a negative status.
 } 
 .hidden-header-tab-pane .tab-header-area {
     visibility: hidden ;
+}
+
+.green-status {
+    -fx-fill: roomba-green;
+}
+
+.red-status {
+    -fx-fill: red;
 }

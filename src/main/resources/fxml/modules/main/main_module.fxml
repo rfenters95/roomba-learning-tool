@@ -39,7 +39,7 @@
                 <Insets/>
             </VBox.margin>
         </Separator>
-        <Label styleClass="h2-font" text="Device information"/>
+        <Label styleClass="h2-font" text="Device Information"/>
         <VBox spacing="10.0">
             <children>
                 <BorderPane>

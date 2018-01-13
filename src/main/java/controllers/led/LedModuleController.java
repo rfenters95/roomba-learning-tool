@@ -2,6 +2,7 @@ package controllers.led;
 
 import controllers.ModuleController;
 import core.NumericTextFieldValidator;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,9 @@ import java.util.ResourceBundle;
 public class LedModuleController extends ModuleController implements Initializable {
 
     private final static Logger LOGGER = Logger.getLogger(LedModuleController.class);
+
+    @FXML
+    private MaterialDesignIconView playIcon;
 
     @FXML
     private CheckBox debrisCheckBox;
@@ -34,16 +38,25 @@ public class LedModuleController extends ModuleController implements Initializab
     @FXML
     private TextField powerIntensityTextField;
 
+    private boolean playing;
+
     @FXML
     public void handlePlayButtonAction(ActionEvent event) {
-        boolean debris = debrisCheckBox.isSelected();
-        boolean spot = spotCheckBox.isSelected();
-        boolean dock = dockCheckBox.isSelected();
-        boolean checkRobot = checkRobotCheckBox.isSelected();
-        int powerColor = Integer.parseInt(powerColorTextField.getText());
-        int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());
-        ModuleController.getRoomba().leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
-        LOGGER.info("Executed leds() command");
+        if (!playing) {
+            boolean debris = debrisCheckBox.isSelected();
+            boolean spot = spotCheckBox.isSelected();
+            boolean dock = dockCheckBox.isSelected();
+            boolean checkRobot = checkRobotCheckBox.isSelected();
+            int powerColor = Integer.parseInt(powerColorTextField.getText());
+            int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());
+            getRoomba().leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
+            toggleNodeStatus(playIcon, "play", "stop");
+            LOGGER.info("Executed leds() command");
+        } else {
+            getRoomba().leds(false, false, false, false, 0, 0);
+            toggleNodeStatus(playIcon, "stop", "play");
+        }
+        playing = !playing;
     }
 
     @FXML

@@ -25,7 +25,7 @@
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePlayButtonAction"
                                 styleClass="icon-button">
                             <graphic>
-                                <MaterialDesignIconView accessibleText="Play" styleClass="play"/>
+                                <MaterialDesignIconView fx:id="playIcon" accessibleText="Play" styleClass="play"/>
                             </graphic>
                         </Button>
                     </children>

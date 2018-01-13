@@ -6,6 +6,7 @@ import core.ConnectionType;
 import core.StartMode;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.Node;
 import org.apache.log4j.Logger;
 
 public abstract class ModuleController {
@@ -123,5 +124,10 @@ public abstract class ModuleController {
 
     public static SimpleBooleanProperty readingSensorsProperty() {
         return readingSensors;
+    }
+
+    public static void toggleNodeStatus(Node node, String oldGlyph, String newGlyph) {
+        node.getStyleClass().remove(oldGlyph);
+        node.getStyleClass().add(newGlyph);
     }
 }

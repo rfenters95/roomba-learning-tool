@@ -97,7 +97,7 @@
                             <children>
                                 <Label styleClass="h3-font" text="USB Devices"/>
                                 <Label styleClass="normal-font" text="Searching..."/>
-                                <ListView fx:id="usbListView"/>
+                                <ListView fx:id="usbListView" maxHeight="200.0"/>
                             </children>
                             <styleClass>
                                 <String fx:value="tab-content-bg"/>
@@ -112,7 +112,7 @@
                             <children>
                                 <Label styleClass="h3-font" text="Wifi Devices"/>
                                 <Label styleClass="normal-font" text="Searching..."/>
-                                <ListView fx:id="wifiListView"/>
+                                <ListView fx:id="wifiListView" maxHeight="200.0"/>
                             </children>
                             <styleClass>
                                 <String fx:value="tab-content-container"/>
