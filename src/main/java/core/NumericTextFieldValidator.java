@@ -40,6 +40,12 @@ public class NumericTextFieldValidator implements ChangeListener<String> {
                 if (newValue.matches("0+\\d+")) {
                     LOGGER.trace(String.format("newValue [%s] rejected! Value contains leading zeros.", newValue));
                     textField.setText(String.valueOf(value));
+                } else if (newValue.matches("-(0+)(\\d+)") && shouldPreventNegatives) {
+                    textField.setText(oldValue);
+                } else if (newValue.matches("-(0+)(\\d+)") && !shouldPreventNegatives) {
+                    value = Integer.parseInt(newValue.substring(1));
+                    value *= -1;
+                    textField.setText(String.valueOf(value));
                 } else {
                     // check if newValue is valid num
                     if ((value < lowerLimit || value > upperLimit) && !specialValues.contains(value)) {
