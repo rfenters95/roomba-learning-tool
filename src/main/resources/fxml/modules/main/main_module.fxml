@@ -27,7 +27,7 @@
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#openConnectionModule"
                                 prefHeight="50.0" prefWidth="50.0">
                             <graphic>
-                                <MaterialDesignIconView styleClass="power"/>
+                                <MaterialDesignIconView fx:id="iconView" styleClass="power"/>
                             </graphic>
                         </Button>
                     </children>

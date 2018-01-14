@@ -66,7 +66,7 @@ this style is applied to Labels
 that are considered a heading-1.
 */
 .h1-font {
-    -fx-font-size: 32px;
+    -fx-font-size: 24px;
     -fx-text-fill: roomba-yellow;
 }
 
@@ -75,7 +75,7 @@ this style is applied to Labels
 that are considered a heading-2.
 */
 .h2-font {
-    -fx-font-size: 24px;
+    -fx-font-size: 18px;
     -fx-text-fill: roomba-yellow;
 }
 

@@ -2,6 +2,7 @@ package controllers.main;
 
 import controllers.Module;
 import controllers.ModuleController;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,9 @@ import java.util.ResourceBundle;
 public class MainModuleController extends ModuleController implements Initializable {
 
     private final static Logger LOGGER = Logger.getLogger(MainModuleController.class);
+
+    @FXML
+    private MaterialDesignIconView iconView;
 
     @FXML
     private Label connectionStatusLabel;
@@ -87,15 +91,20 @@ public class MainModuleController extends ModuleController implements Initializa
     public void initialize(URL location, ResourceBundle resources) {
         connectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
+                iconView.getStyleClass().clear();
+                iconView.getStyleClass().add("power");
+                iconView.getStyleClass().add("green-status");
                 connectionStatusLabel.setText("Connected!");
                 connectionStatusLabel.getStyleClass().clear();
                 connectionStatusLabel.getStyleClass().add("okay-status-font");
                 deviceNameLabel.setText(getPort());
                 connectionTypeLabel.setText(getConnectionType().toString());
-                //startModeLabel.setText(getStartMode().toString());
                 batteryUpdaterThread = new BatteryUpdaterThread();
                 batteryUpdaterThread.start();
             } else {
+                iconView.getStyleClass().clear();
+                iconView.getStyleClass().add("power");
+                iconView.getStyleClass().add("red-status");
                 connectionStatusLabel.setText("Not Connected!");
                 connectionStatusLabel.getStyleClass().clear();
                 connectionStatusLabel.getStyleClass().add("error-status-font");
