@@ -13,7 +13,7 @@ public abstract class ModuleController {
 
     private final static Logger LOGGER = Logger.getLogger(ModuleController.class);
 
-    private static SimpleObjectProperty<RoombaJSSC> roomba = new SimpleObjectProperty<>(null);
+    private static RoombaJSSC roomba = null;
     private static SimpleObjectProperty<ConnectionType> connectionType = new SimpleObjectProperty<>(null);
     private static SimpleObjectProperty<StartMode> startMode = new SimpleObjectProperty<>(null);
     private static SimpleObjectProperty<String> port = new SimpleObjectProperty<>(null);
@@ -36,10 +36,10 @@ public abstract class ModuleController {
     static void startUp(StartMode startMode) {
         switch (startMode) {
             case Full:
-                ModuleController.roomba.get().fullMode();
+                ModuleController.roomba.fullMode();
                 break;
             case Safe:
-                ModuleController.roomba.get().safeMode();
+                ModuleController.roomba.safeMode();
                 break;
             default:
                 break;
@@ -48,9 +48,9 @@ public abstract class ModuleController {
     }
 
     protected static void connect(String port) {
-        ModuleController.roomba.get().connect(port);
-        ModuleController.roomba.get().start();
-        ModuleController.connected.set(true);
+        ModuleController.roomba.connect(port);
+        ModuleController.roomba.start();
+        ModuleController.setConnected(true);
     }
 
     protected static String[] getPorts() {
@@ -59,23 +59,19 @@ public abstract class ModuleController {
 
     public static void disconnect() {
         ModuleController.setReadingSensors(false);
-        ModuleController.roomba.get().stop();
+        ModuleController.roomba.stop();
         LOGGER.debug("Roomba stopped");
-        ModuleController.roomba.get().disconnect();
+        ModuleController.roomba.disconnect();
         LOGGER.debug("Roomba disconnected");
         ModuleController.setConnected(false);
     }
 
     public static RoombaJSSC getRoomba() {
-        return roomba.get();
+        return roomba;
     }
 
     public static void setRoomba(RoombaJSSC roomba) {
-        ModuleController.roomba.set(roomba);
-    }
-
-    public static SimpleObjectProperty<RoombaJSSC> roombaProperty() {
-        return roomba;
+        ModuleController.roomba = roomba;
     }
 
     protected static ConnectionType getConnectionType() {

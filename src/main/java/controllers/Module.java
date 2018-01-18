@@ -12,18 +12,19 @@ import java.io.IOException;
 
 /* Enum containing all app modules. */
 public enum Module {
-    Drive(new File("/fxml/modules/drive/drive_module.fxml"), "Drive Module"),
-    LED(new File("/fxml/modules/led/led_module.fxml"), "LED Module"),
-    Sensor(new File("/fxml/modules/sensor/sensor_module.fxml"), "Sensor Module"),
-    Song(new File("/fxml/modules/song/song_module.fxml"), "Song Module"),
-    Information(new File("/fxml/modules/information/information_module.fxml"), "Information Module"),
-    Connection(new File("/fxml/modules/connection/connection_module.fxml"), "Connection Module");
+    Drive(new File("/fxml/modules/drive/drive_module.fxml"), "Drive Module", true),
+    LED(new File("/fxml/modules/led/led_module.fxml"), "LED Module", true),
+    Sensor(new File("/fxml/modules/sensor/sensor_module.fxml"), "Sensor Module", true),
+    Song(new File("/fxml/modules/song/song_module.fxml"), "Song Module", true),
+    Information(new File("/fxml/modules/information/information_module.fxml"), "Information Module", true),
+    Connection(new File("/fxml/modules/connection/connection_module.fxml"), "Connection Module", false);
 
     private final static Logger LOGGER = Logger.getLogger(Module.class);
 
     private File file;
     private String title;
     private boolean isShowing;
+    private boolean closable;
     private Stage stage;
 
     /*
@@ -31,9 +32,10 @@ public enum Module {
      * @param file Path to the modules FXML file.
      * @param title Title of the modules window.
      * */
-    Module(File file, String title) {
+    Module(File file, String title, boolean closable) {
         this.file = file;
         this.title = title;
+        this.closable = closable;
     }
 
     /*
@@ -71,7 +73,13 @@ public enum Module {
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.setScene(new Scene(root));
-        stage.setOnCloseRequest(e -> isShowing = false);
+        stage.setOnCloseRequest(e -> {
+            if (closable) {
+                isShowing = false;
+            } else {
+                e.consume();
+            }
+        });
         return stage;
     }
 

@@ -146,6 +146,7 @@ public class ConnectionModuleController extends ModuleController implements Init
 
         if (isConnected()) {
             resumeState();
+            LOGGER.trace("Resuming connection state!");
         }
     }
 
