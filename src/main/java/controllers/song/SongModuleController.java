@@ -163,9 +163,10 @@ public class SongModuleController extends ModuleController implements Initializa
         RoombaNote roombaNote = noteComboBox.getSelectionModel().getSelectedItem();
         RoombaNoteDuration roombaNoteDuration = durationComboBox.getSelectionModel().getSelectedItem();
         RoombaSongNote roombaSongNote = new RoombaSongNote(roombaNote, roombaNoteDuration);
-        int songPreviewNumber = songPreviewNumberComboBox.getValue();
+        int songPreviewNumber = songPreviewNumberComboBox.getValue() - 1;
         ModuleController.getRoomba().song(songPreviewNumber, new RoombaSongNote[]{roombaSongNote}, 125);
         ModuleController.getRoomba().play(songPreviewNumber);
+        ModuleController.getRoomba().sleep(1000);
     }
 
     @FXML
@@ -181,9 +182,10 @@ public class SongModuleController extends ModuleController implements Initializa
             for (int i = 0; i < tableRows.size(); i++) {
                 roombaSongNotes[i] = tableRows.get(i).getRoombaSongNote();
             }
-            int songPreviewNumber = songPreviewNumberComboBox.getValue();
+            int songPreviewNumber = songPreviewNumberComboBox.getValue() - 1;
             ModuleController.getRoomba().song(songPreviewNumber, roombaSongNotes, 125);
             ModuleController.getRoomba().play(songPreviewNumber);
+            ModuleController.getRoomba().sleep(1000);
         }
     }
 
@@ -193,9 +195,10 @@ public class SongModuleController extends ModuleController implements Initializa
             int index = tableView.getSelectionModel().getSelectedIndex();
             TableRow tableRow = tableView.getItems().get(index);
             RoombaSongNote roombaSongNote = tableRow.getRoombaSongNote();
-            int songPreviewNumber = songPreviewNumberComboBox.getValue();
+            int songPreviewNumber = songPreviewNumberComboBox.getValue() - 1;
             ModuleController.getRoomba().song(songPreviewNumber, new RoombaSongNote[]{roombaSongNote}, 125);
             ModuleController.getRoomba().play(songPreviewNumber);
+            ModuleController.getRoomba().sleep(1000);
         }
     }
 

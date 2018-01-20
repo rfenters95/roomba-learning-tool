@@ -48,6 +48,7 @@ public class Main extends Application {
         public void handle(WindowEvent event) {
             if (ModuleController.isConnected()) {
                 ModuleController.disconnect();
+                ModuleController.shutdown();
             }
             Platform.runLater(Platform::exit);
         }

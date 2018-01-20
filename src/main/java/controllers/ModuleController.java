@@ -49,7 +49,7 @@ public abstract class ModuleController {
 
     protected static void connect(String port) {
         ModuleController.roomba.connect(port);
-        ModuleController.roomba.start();
+        ModuleController.roomba.startup();
         ModuleController.setConnected(true);
     }
 
@@ -61,9 +61,11 @@ public abstract class ModuleController {
         ModuleController.setReadingSensors(false);
         ModuleController.roomba.stop();
         LOGGER.debug("Roomba stopped");
-        ModuleController.roomba.disconnect();
-        LOGGER.debug("Roomba disconnected");
         ModuleController.setConnected(false);
+    }
+
+    public static void shutdown() {
+        ModuleController.roomba.disconnect();
     }
 
     public static RoombaJSSC getRoomba() {

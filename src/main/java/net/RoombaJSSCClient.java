@@ -89,6 +89,8 @@ public class RoombaJSSCClient extends RoombaJSSCClientSerial {
                     sensorData[i] = Byte.parseByte(nextLine);
                 }
                 setCurrentSensorData(sensorData);
+            } else {
+                System.out.println("Nothing returned!");
             }
             return true;
         } catch (IOException e) {
