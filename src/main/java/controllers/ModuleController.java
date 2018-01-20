@@ -33,7 +33,7 @@ public abstract class ModuleController {
         return connected;
     }
 
-    static void startUp(StartMode startMode) {
+    public static void startUp(StartMode startMode) {
         switch (startMode) {
             case Full:
                 ModuleController.roomba.fullMode();

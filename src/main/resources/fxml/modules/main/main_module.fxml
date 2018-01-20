@@ -83,8 +83,8 @@
                         <Label styleClass="normal-font" text="Start mode" BorderPane.alignment="CENTER"/>
                     </left>
                     <right>
-                        <Label fx:id="startModeLabel" styleClass="normal-font" text="N/A"
-                               BorderPane.alignment="CENTER"/>
+                        <ComboBox fx:id="startModeComboBox" prefWidth="150.0" BorderPane.alignment="CENTER"
+                                  onAction="#startModeComboBoxActionEvent"/>
                     </right>
                 </BorderPane>
             </children>

@@ -2,11 +2,13 @@ package controllers.main;
 
 import controllers.Module;
 import controllers.ModuleController;
+import core.StartMode;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import org.apache.log4j.Logger;
 
@@ -33,7 +35,7 @@ public class MainModuleController extends ModuleController implements Initializa
     private Label batteryStatusLabel;
 
     @FXML
-    private Label startModeLabel;
+    private ComboBox<StartMode> startModeComboBox;
 
     private BatteryUpdaterThread batteryUpdaterThread;
 
@@ -87,8 +89,20 @@ public class MainModuleController extends ModuleController implements Initializa
         }
     }
 
+    @FXML
+    void startModeComboBoxActionEvent(ActionEvent event) {
+        if (isConnected()) {
+            StartMode startMode = startModeComboBox.getValue();
+            startUp(startMode);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        startModeComboBox.getItems().addAll(StartMode.values());
+        startModeComboBox.getSelectionModel().selectFirst();
+        startModeComboBox.setDisable(true);
+
         connectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 iconView.getStyleClass().clear();
@@ -98,6 +112,7 @@ public class MainModuleController extends ModuleController implements Initializa
                 connectionStatusLabel.getStyleClass().clear();
                 connectionStatusLabel.getStyleClass().add("okay-status-font");
                 deviceNameLabel.setText(getPort());
+                startModeComboBox.setDisable(false);
                 connectionTypeLabel.setText(getConnectionType().toString());
                 batteryUpdaterThread = new BatteryUpdaterThread();
                 batteryUpdaterThread.start();
@@ -109,8 +124,8 @@ public class MainModuleController extends ModuleController implements Initializa
                 connectionStatusLabel.getStyleClass().clear();
                 connectionStatusLabel.getStyleClass().add("error-status-font");
                 deviceNameLabel.setText("N/A");
+                startModeComboBox.setDisable(true);
                 connectionTypeLabel.setText("N/A");
-                startModeLabel.setText("N/A");
                 batteryStatusLabel.setText("N/A");
             }
         });
