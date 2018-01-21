@@ -78,6 +78,7 @@ public enum Module {
                 isShowing = false;
             } else {
                 e.consume();
+                stage.setIconified(true);
             }
         });
         return stage;
