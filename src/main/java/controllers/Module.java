@@ -7,21 +7,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 
 /* Enum containing all app modules. */
 public enum Module {
-    Drive(new File("/fxml/modules/drive/drive_module.fxml"), "Drive Module", true),
-    LED(new File("/fxml/modules/led/led_module.fxml"), "LED Module", true),
-    Sensor(new File("/fxml/modules/sensor/sensor_module.fxml"), "Sensor Module", true),
-    Song(new File("/fxml/modules/song/song_module.fxml"), "Song Module", true),
-    Information(new File("/fxml/modules/information/information_module.fxml"), "Information Module", true),
-    Connection(new File("/fxml/modules/connection/connection_module.fxml"), "Connection Module", false);
+    Drive("/fxml/modules/drive/drive_module.fxml", "Drive Module", true),
+    LED("/fxml/modules/led/led_module.fxml", "LED Module", true),
+    Sensor("/fxml/modules/sensor/sensor_module.fxml", "Sensor Module", true),
+    Song("/fxml/modules/song/song_module.fxml", "Song Module", true),
+    Information("/fxml/modules/information/information_module.fxml", "Information Module", true),
+    Connection("/fxml/modules/connection/connection_module.fxml", "Connection Module", false);
 
     private final static Logger LOGGER = Logger.getLogger(Module.class);
 
-    private File file;
+    private String filePath;
     private String title;
     private boolean isShowing;
     private boolean closable;
@@ -32,8 +31,8 @@ public enum Module {
      * @param file Path to the modules FXML file.
      * @param title Title of the modules window.
      * */
-    Module(File file, String title, boolean closable) {
-        this.file = file;
+    Module(String filePath, String title, boolean closable) {
+        this.filePath = filePath;
         this.title = title;
         this.closable = closable;
     }
@@ -51,12 +50,12 @@ public enum Module {
      * Loads FXML file and constructs a parent node.
      * @return Parent Parent node of FXML file.
      * */
-    private Parent getParent(File file) {
+    private Parent getParent(String filePath) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(file.toString()));
+            loader.setLocation(getClass().getResource(filePath));
             Parent root = loader.load();
-            LOGGER.trace("FXMLLoader has loaded " + file.getName());
+            LOGGER.trace("FXMLLoader has loaded " + filePath);
             return root;
         } catch (IOException e) {
             LOGGER.fatal(e.getMessage(), e);
@@ -91,7 +90,7 @@ public enum Module {
         } else {
             try {
                 // Configure & show stage
-                stage = createStage(getParent(file));
+                stage = createStage(getParent(filePath));
                 stage.show();
                 setShowing(true);
                 LOGGER.trace(title + " is showing");
