@@ -51,14 +51,12 @@ public class SensorModuleController extends ModuleController implements Initiali
     void handlePlayButtonActionEvent(ActionEvent event) {
         if (isReadingSensors()) {
             setReadingSensors(false);
-            // change icon
         } else {
             listView.getItems().clear();
             Sensor sensor = sensorComboBox.getSelectionModel().getSelectedItem();
             SensorThread thread = new SensorThread(sensor);
             setReadingSensors(true);
             thread.start();
-            // change icon
         }
     }
 
@@ -158,7 +156,7 @@ public class SensorModuleController extends ModuleController implements Initiali
                 ModuleController.getRoomba().updateSensors();
                 LOGGER.debug("SensorThread updated sensors");
                 String value = sensor.read();
-                Platform.runLater(() -> listView.getItems().add(value));
+                Platform.runLater(() -> listView.getItems().add(0, value));
                 LOGGER.debug("SensorThread added sensor value to listView");
                 LOGGER.debug("SensorThread entering sleep for 100 millis");
                 try {
