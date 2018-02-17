@@ -617,3 +617,28 @@ to represent a negative status.
 .red-status {
     -fx-fill: red;
 }
+
+
+.dialog-pane {
+    -fx-border-color: bg-color;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: bg-color;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-size: 24px;
+    -fx-text-fill: roomba-yellow;
+}
+
+.dialog-pane .content {
+    -fx-background-color: module-color;
+    -fx-font-size: 14px;
+    -fx-text-fill: roomba-yellow;
+    -fx-padding: 10;
+}
+
+.dialog-pane .button-bar .container {
+    -fx-background-color: bg-color;
+}
