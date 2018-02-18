@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 public class InvalidInputAlert extends Alert {
 
     public InvalidInputAlert(int lowerLimit, int value, int upperLimit) {
-        super(AlertType.INFORMATION);
+        super(AlertType.ERROR);
 
         setTitle("Invalid Input");
 

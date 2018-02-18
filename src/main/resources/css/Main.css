@@ -543,8 +543,7 @@ to represent a negative status.
 }
 
 /* TextArea Style Classes */
-
-/*.text-area {
+.text-area {
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
@@ -559,7 +558,11 @@ to represent a negative status.
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-background-color: module-color;
-}*/
+}
+
+.dialog-pane .content .text-area .content {
+    -fx-padding: 15;
+}
 
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;

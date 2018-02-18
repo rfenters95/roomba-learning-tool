@@ -1,15 +1,14 @@
 package controllers.drive;
 
+import alerts.DriveDirectInfo;
+import alerts.DriveInfo;
 import controllers.ModuleController;
 import core.NumericTextFieldValidator;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
@@ -65,6 +64,17 @@ public class DriveModuleController extends ModuleController implements Initializ
 
     @FXML
     private void handleInfoButtonAction(ActionEvent event) {
+
+        DriveCommand driveCommand = driveCommandComboBox.getValue();
+
+        Alert alert;
+        if (driveCommand == DriveCommand.Drive) {
+            alert = new DriveInfo();
+        } else {
+            alert = new DriveDirectInfo();
+        }
+
+        alert.showAndWait();
     }
 
     private boolean isDriveValidInput() {
