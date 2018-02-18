@@ -10,17 +10,19 @@ public class InvalidInputAlert extends Alert {
     public InvalidInputAlert(int lowerLimit, int value, int upperLimit) {
         super(AlertType.INFORMATION);
 
+        setTitle("Invalid Input");
+
         getDialogPane().getStylesheets().add("css/Main.css");
 
         getDialogPane().setPrefWidth(450);
 
         setHeaderText("Invalid input");
 
-        BorderPane messageRow = new BorderPane(null, null, messageLabel("Input value exceeded acceptable bounds!"), null, new Label("Message:"));
+        BorderPane messageRow = new BorderPane(null, null, messageLabel("User input exceeded acceptable bounds!"), null, new Label("Message:"));
 
         BorderPane lowerBoundRow = new BorderPane(null, null, limitLabel(lowerLimit), null, new Label("Lower Bound:"));
 
-        BorderPane valueRow = new BorderPane(null, null, valueLabel(value), null, new Label("Value:"));
+        BorderPane valueRow = new BorderPane(null, null, valueLabel(value), null, new Label("User Input:"));
 
         BorderPane upperBoundRow = new BorderPane(null, null, limitLabel(upperLimit), null, new Label("Upper Bound:"));
 

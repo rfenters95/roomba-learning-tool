@@ -37,44 +37,36 @@ public class MainModuleController extends ModuleController implements Initializa
     @FXML
     private ComboBox<StartMode> startModeComboBox;
 
-    private BatteryUpdaterThread batteryUpdaterThread;
-
-    /* Opens a new window for the Drive Module. */
     @FXML
     void openDriveModule(ActionEvent event) {
         Module module = Module.Drive;
         openModule(module);
     }
 
-    /* Opens a new window for the LED Module. */
     @FXML
     void openLEDModule(ActionEvent event) {
         Module module = Module.LED;
         openModule(module);
     }
 
-    /* Opens a new window for the Sensor Module. */
     @FXML
     void openSensorModule(ActionEvent event) {
         Module module = Module.Sensor;
         openModule(module);
     }
 
-    /* Opens a new window for the Song Module. */
     @FXML
     void openSongModule(ActionEvent event) {
         Module module = Module.Song;
         openModule(module);
     }
 
-    /* Opens a new window for the Information Module. */
     @FXML
     void openInformationModule(ActionEvent event) {
         Module module = Module.Information;
         openModule(module);
     }
 
-    /* Opens a new window for the Connection Module. */
     @FXML
     void openConnectionModule(ActionEvent event) {
         Module module = Module.Connection;
@@ -103,55 +95,89 @@ public class MainModuleController extends ModuleController implements Initializa
         startModeComboBox.getSelectionModel().selectFirst();
         startModeComboBox.setDisable(true);
 
+        startModeComboBox.setOnAction(e -> {
+            StartMode startMode = startModeComboBox.getValue();
+            startUp(startMode);
+        });
+
         connectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                iconView.getStyleClass().clear();
-                iconView.getStyleClass().add("power");
-                iconView.getStyleClass().add("green-status");
-                connectionStatusLabel.setText("Connected!");
-                connectionStatusLabel.getStyleClass().clear();
-                connectionStatusLabel.getStyleClass().add("okay-status-font");
-                deviceNameLabel.setText(getPort());
-                startModeComboBox.setDisable(false);
-                connectionTypeLabel.setText(getConnectionType().toString());
-                batteryUpdaterThread = new BatteryUpdaterThread();
-                batteryUpdaterThread.start();
+                insertInformation();
             } else {
-                iconView.getStyleClass().clear();
-                iconView.getStyleClass().add("power");
-                iconView.getStyleClass().add("red-status");
-                connectionStatusLabel.setText("Not Connected!");
-                connectionStatusLabel.getStyleClass().clear();
-                connectionStatusLabel.getStyleClass().add("error-status-font");
-                deviceNameLabel.setText("N/A");
-                startModeComboBox.setDisable(true);
-                connectionTypeLabel.setText("N/A");
-                batteryStatusLabel.setText("N/A");
+                setDefaults();
             }
         });
+    }
+
+    private void insertInformation() {
+
+        iconView.getStyleClass().clear();
+        iconView.getStyleClass().add("power");
+        iconView.getStyleClass().add("green-status");
+
+        connectionStatusLabel.setText("Connected!");
+        connectionStatusLabel.getStyleClass().clear();
+        connectionStatusLabel.getStyleClass().add("okay-status-font");
+
+        deviceNameLabel.setText(getPort());
+        startModeComboBox.setDisable(false);
+        connectionTypeLabel.setText(getConnectionType().toString());
+        BatteryUpdaterThread batteryUpdaterThread = new BatteryUpdaterThread();
+        batteryUpdaterThread.start();
+    }
+
+    private void setDefaults() {
+
+        iconView.getStyleClass().clear();
+        iconView.getStyleClass().add("power");
+        iconView.getStyleClass().add("red-status");
+
+        connectionStatusLabel.setText("Not Connected!");
+        connectionStatusLabel.getStyleClass().clear();
+        connectionStatusLabel.getStyleClass().add("error-status-font");
+
+        deviceNameLabel.setText("N/A");
+        startModeComboBox.setDisable(true);
+        connectionTypeLabel.setText("N/A");
+        batteryStatusLabel.setText("N/A");
     }
 
     private class BatteryUpdaterThread extends Thread {
 
         @Override
         public void run() {
+
             final int minutesToSleep = 10;
+
             final int minutesToMillisConversionFactor = 60 * 1000;
+
             final long millisToSleep = minutesToSleep * minutesToMillisConversionFactor;
+
             while (isConnected()) {
+
                 int measuredBatteryCharge = ModuleController.getRoomba().batteryCharge();
+
                 int maxBatteryCharge = 65535;
+
                 double batteryPercentage = (measuredBatteryCharge / maxBatteryCharge) * 100;
-                Platform.runLater(() -> batteryStatusLabel.setText(String.format("%3.2f%%", batteryPercentage)));
+
+                Platform.runLater(() -> batteryStatusLabel.setText(String.valueOf(batteryPercentage) + "%"));
+
                 try {
+
                     final long sleepStartTime = System.currentTimeMillis();
+
                     final long timeSlept = System.currentTimeMillis() - sleepStartTime;
+
                     while (isConnected() && (millisToSleep > timeSlept)) {
+
                         Thread.sleep(100);
+
                     }
                 } catch (InterruptedException e) {
                     LOGGER.error(e.getMessage(), e);
                 }
+
             }
             LOGGER.debug("BatteryUpdaterThread ended successfully!");
         }
