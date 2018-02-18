@@ -23,6 +23,9 @@ public class NumericTextFieldValidatorTest {
 
     @Test
     public void changed() {
+
+        // Comment out alert in NumericTestFieldValidator before testing
+
         final int defaultValue = 0;
 
         // Test : only permitted non-numeric symbol -

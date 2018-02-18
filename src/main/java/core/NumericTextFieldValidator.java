@@ -1,5 +1,6 @@
 package core;
 
+import alerts.InvalidInputAlert;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
@@ -64,23 +65,12 @@ public class NumericTextFieldValidator implements ChangeListener<String> {
 
             if (isOutOfBounds(value) && !isSpecialValue(value)) {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new InvalidInputAlert(lowerLimit, value, upperLimit);
 
-                alert.getDialogPane().getStylesheets().add("css/Main.css");
-                alert.getDialogPane().setPrefWidth(450);
-
-                alert.setHeaderText("Invalid input");
-
-                String message =
-                        String.format("Message: Input value exceeds the bounds for this input field!\n\n") +
-                                String.format("Lower bound: %s\n", lowerLimit) +
-                                String.format("Value: %s\n", value) +
-                                String.format("Upper bound: %s\n", upperLimit);
-                alert.setContentText(message);
-
-                alert.showAndWait();
+                alert.showAndWait(); // Comment this out to test
 
                 textField.setText(oldValue);
+
                 return;
             }
 

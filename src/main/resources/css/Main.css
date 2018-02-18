@@ -625,6 +625,7 @@ to represent a negative status.
 
 .dialog-pane:header .header-panel {
     -fx-background-color: bg-color;
+    -fx-padding: 25;
 }
 
 .dialog-pane:header .header-panel .label {
@@ -634,11 +635,19 @@ to represent a negative status.
 
 .dialog-pane .content {
     -fx-background-color: module-color;
+    -fx-padding: 25;
+}
+
+.dialog-pane-content-vBox {
+    -fx-spacing: 5;
+}
+
+.dialog-pane .content .label {
     -fx-font-size: 14px;
     -fx-text-fill: roomba-yellow;
-    -fx-padding: 10;
 }
 
 .dialog-pane .button-bar .container {
     -fx-background-color: bg-color;
+    -fx-padding: 25;
 }
