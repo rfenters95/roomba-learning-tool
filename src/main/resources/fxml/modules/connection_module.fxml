@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0"
-      styleClass="root-container" stylesheets="@../../../css/test.css" xmlns="http://javafx.com/javafx/8.0.111"
-      fx:controller="controllers.connection.ConnectionModuleController">
+      styleClass="module-container" stylesheets="@../../css/Main.css" xmlns="http://javafx.com/javafx/8.0.111"
+      fx:controller="controllers.ConnectionModuleController">
     <children>
         <BorderPane>
             <left>
@@ -22,14 +22,7 @@
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRefreshButtonAction"
                                 styleClass="icon-button">
                             <graphic>
-                                <MaterialDesignIconView id="refresh" glyphName="REFRESH" size="42"/>
-                            </graphic>
-                        </Button>
-                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                minWidth="-Infinity" mnemonicParsing="false"
-                                onAction="#handleTestConnectionButtonAction" styleClass="icon-button">
-                            <graphic>
-                                <MaterialDesignIconView size="42" styleClass="test"/>
+                                <MaterialDesignIconView styleClass="refresh"/>
                             </graphic>
                         </Button>
                         <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
@@ -49,7 +42,7 @@
             </VBox.margin>
         </Separator>
         <Label styleClass="h3-font" text="Connection Information"/>
-        <BorderPane styleClass="indented-level-1">
+        <BorderPane>
             <left>
                 <Label styleClass="normal-font" text="Connection type" BorderPane.alignment="CENTER">
                     <font>
@@ -64,7 +57,7 @@
         </BorderPane>
         <Separator prefWidth="200.0"/>
         <Label styleClass="h3-font" text="Device Results"/>
-        <BorderPane styleClass="indented-level-1">
+        <BorderPane>
             <left>
                 <Label styleClass="normal-font" text="Selected device" BorderPane.alignment="CENTER">
                     <font>
@@ -73,14 +66,10 @@
                 </Label>
             </left>
             <right>
-                <Label fx:id="selectedDeviceStatusLabel" styleClass="error-status-font" text="Not Selected"
+                <Label fx:id="selectedPortStatusLabel" styleClass="error-status-font" text="Not Selected!"
                        BorderPane.alignment="CENTER"/>
             </right>
         </BorderPane>
-        <ListView fx:id="listView" prefHeight="200.0">
-            <VBox.margin>
-                <Insets left="25.0"/>
-            </VBox.margin>
-        </ListView>
+        <ListView fx:id="listView" maxHeight="116.0"/>
     </children>
 </VBox>

@@ -1,7 +1,5 @@
-package controllers.main;
+package controllers;
 
-import controllers.Module;
-import controllers.ModuleController;
 import core.StartMode;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
@@ -58,12 +56,6 @@ public class MainModuleController extends ModuleController implements Initializa
     @FXML
     void openSongModule(ActionEvent event) {
         Module module = Module.Song;
-        openModule(module);
-    }
-
-    @FXML
-    void openInformationModule(ActionEvent event) {
-        Module module = Module.Information;
         openModule(module);
     }
 

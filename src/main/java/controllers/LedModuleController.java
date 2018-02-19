@@ -1,6 +1,6 @@
-package controllers.led;
+package controllers;
 
-import controllers.ModuleController;
+import alerts.LedInfo;
 import core.NumericTextFieldValidator;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
@@ -61,6 +61,7 @@ public class LedModuleController extends ModuleController implements Initializab
 
     @FXML
     public void handleInfoButtonAction(ActionEvent event) {
+        new LedInfo().showAndWait();
     }
 
     @Override

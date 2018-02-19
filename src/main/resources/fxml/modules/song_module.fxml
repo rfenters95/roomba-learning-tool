@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.lang.*?>
+<?import java.lang.String?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefWidth="600.0" styleClass="root-container" stylesheets="@../../../css/test.css"
+      minWidth="-Infinity" styleClass="module-container" stylesheets="@../../css/Main.css"
       xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.song.SongModuleController">
     <children>
         <BorderPane>
@@ -15,12 +16,12 @@
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                                 mnemonicParsing="false" onAction="#handleInfoButtonAction" styleClass="icon-button">
                             <graphic>
-                                <MaterialDesignIconView id="info" glyphName="INFORMATION_OUTLINE" size="42"/>
+                                <MaterialDesignIconView styleClass="info"/>
                             </graphic>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#handlePlayButtonAction" styleClass="icon-button">
                             <graphic>
-                                <MaterialDesignIconView id="play" glyphName="PLAY" size="42"/>
+                                <MaterialDesignIconView styleClass="play"/>
                             </graphic>
                         </Button>
                     </children>
@@ -38,32 +39,31 @@
                         <VBox>
                             <children>
                                 <Label styleClass="h2-font" text="Preferences"/>
-                                <BorderPane styleClass="indented-level-1">
+                                <BorderPane styleClass="indent-padding">
                                     <left>
                                         <Label styleClass="normal-font" text="Select song number"
                                                BorderPane.alignment="CENTER"/>
                                     </left>
                                     <right>
-                                        <ComboBox fx:id="songNumberComboBox" prefWidth="150.0"
-                                                  BorderPane.alignment="CENTER" onAction="#handleSongNumberComboBox"/>
+                                        <ComboBox fx:id="songNumberComboBox" onAction="#handleSongNumberComboBox"
+                                                  prefWidth="150.0" BorderPane.alignment="CENTER"/>
                                     </right>
                                 </BorderPane>
-                                <BorderPane styleClass="indented-level-1">
+                                <BorderPane styleClass="indent-padding">
                                     <left>
                                         <Label styleClass="normal-font" text="Select preview song number"
                                                BorderPane.alignment="CENTER"/>
                                     </left>
                                     <right>
-                                        <ComboBox fx:id="songPreviewNumberComboBox" prefWidth="150.0"
-                                                  BorderPane.alignment="CENTER"
-                                                  onAction="#handleSongPreviewNumberComboBox"/>
+                                        <ComboBox fx:id="songPreviewNumberComboBox"
+                                                  onAction="#handleSongPreviewNumberComboBox" prefWidth="150.0"
+                                                  BorderPane.alignment="CENTER"/>
                                     </right>
                                 </BorderPane>
                             </children>
                             <styleClass>
-                                <String fx:value="inner-root-container"/>
-                                <String fx:value="tab-content-bg"/>
-                                <String fx:value="tab-content-container"/>
+                                <String fx:value="inner-module-container"/>
+                                <String fx:value="default-tab-content"/>
                             </styleClass>
                         </VBox>
                     </content>
@@ -82,34 +82,41 @@
                                                         onAction="#handleNoteEditorPreviewButtonAction"
                                                         styleClass="small-icon-button">
                                                     <graphic>
-                                                        <MaterialDesignIconView glyphName="VOLUME_HIGH"
-                                                                                styleClass="default-icon-fill-color"/>
+                                                        <MaterialDesignIconView styleClass="preview"/>
                                                     </graphic>
                                                 </Button>
                                                 <Button mnemonicParsing="false" onAction="#handleAddNoteButtonAction"
                                                         styleClass="small-icon-button">
                                                     <graphic>
-                                                        <MaterialDesignIconView id="play" glyphName="PLUS" size="42"/>
+                                                        <MaterialDesignIconView styleClass="plus"/>
                                                     </graphic>
                                                 </Button>
                                             </children>
                                         </HBox>
-                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indented-level-1"
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indent-padding"
                                                     HBox.hgrow="ALWAYS">
                                             <left>
                                                 <Label styleClass="normal-font" text="Note"
-                                                       BorderPane.alignment="CENTER"/>
+                                                       BorderPane.alignment="CENTER">
+                                                    <BorderPane.margin>
+                                                        <Insets right="10.0"/>
+                                                    </BorderPane.margin>
+                                                </Label>
                                             </left>
                                             <right>
                                                 <ComboBox fx:id="noteComboBox" prefWidth="150.0"
                                                           BorderPane.alignment="CENTER"/>
                                             </right>
                                         </BorderPane>
-                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indented-level-1"
+                                        <BorderPane maxWidth="1.7976931348623157E308" styleClass="indent-padding"
                                                     HBox.hgrow="ALWAYS">
                                             <left>
                                                 <Label styleClass="normal-font" text="Duration"
-                                                       BorderPane.alignment="CENTER"/>
+                                                       BorderPane.alignment="CENTER">
+                                                    <BorderPane.margin>
+                                                        <Insets right="10.0"/>
+                                                    </BorderPane.margin>
+                                                </Label>
                                             </left>
                                             <right>
                                                 <ComboBox fx:id="durationComboBox" prefWidth="150.0"
@@ -140,18 +147,7 @@
                                                                 onAction="#handleDeleteNoteButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView glyphName="DELETE"
-                                                                                        styleClass="default-icon-fill-color"/>
-                                                            </graphic>
-                                                        </Button>
-                                                        <Button maxHeight="-Infinity" maxWidth="-Infinity"
-                                                                minHeight="-Infinity" minWidth="-Infinity"
-                                                                mnemonicParsing="false"
-                                                                onAction="#handleEditNoteButtonAction"
-                                                                styleClass="icon-button">
-                                                            <graphic>
-                                                                <MaterialDesignIconView glyphName="PENCIL"
-                                                                                        styleClass="default-icon-fill-color"/>
+                                                                <MaterialDesignIconView styleClass="trash"/>
                                                             </graphic>
                                                         </Button>
                                                         <Button maxHeight="-Infinity" maxWidth="-Infinity"
@@ -160,8 +156,7 @@
                                                                 onAction="#handleMoveNoteDownButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView glyphName="ARROW_DOWN_BOLD"
-                                                                                        styleClass="default-icon-fill-color"/>
+                                                                <MaterialDesignIconView styleClass="arrow-down"/>
                                                             </graphic>
                                                         </Button>
                                                         <Button maxHeight="-Infinity" maxWidth="-Infinity"
@@ -170,8 +165,7 @@
                                                                 onAction="#handleMoveNoteUpButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView glyphName="ARROW_UP_BOLD"
-                                                                                        styleClass="default-icon-fill-color"/>
+                                                                <MaterialDesignIconView styleClass="arrow-up"/>
                                                             </graphic>
                                                         </Button>
                                                         <Button maxHeight="-Infinity" maxWidth="-Infinity"
@@ -180,8 +174,7 @@
                                                                 onAction="#handlePreviewSongNoteButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView glyphName="VOLUME_HIGH"
-                                                                                        styleClass="default-icon-fill-color"/>
+                                                                <MaterialDesignIconView styleClass="preview"/>
                                                             </graphic>
                                                         </Button>
                                                     </children>
@@ -199,16 +192,14 @@
                                                                 onAction="#handleLoadSongButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView id="load"
-                                                                                        glyphName="FOLDER_OUTLINE"/>
+                                                                <MaterialDesignIconView styleClass="load"/>
                                                             </graphic>
                                                         </Button>
                                                         <Button mnemonicParsing="false"
                                                                 onAction="#handleSaveSongButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView id="save"
-                                                                                        glyphName="CONTENT_SAVE"/>
+                                                                <MaterialDesignIconView styleClass="save"/>
                                                             </graphic>
                                                         </Button>
                                                         <Button maxHeight="-Infinity" maxWidth="-Infinity"
@@ -217,8 +208,7 @@
                                                                 onAction="#handlePreviewSongButtonAction"
                                                                 styleClass="icon-button">
                                                             <graphic>
-                                                                <MaterialDesignIconView glyphName="VOLUME_HIGH"
-                                                                                        styleClass="default-icon-fill-color"/>
+                                                                <MaterialDesignIconView styleClass="preview"/>
                                                             </graphic>
                                                         </Button>
                                                     </children>
@@ -230,9 +220,8 @@
                                 </BorderPane>
                             </children>
                             <styleClass>
-                                <String fx:value="inner-root-container"/>
-                                <String fx:value="tab-content-bg"/>
-                                <String fx:value="tab-content-container"/>
+                                <String fx:value="inner-module-container"/>
+                                <String fx:value="default-tab-content"/>
                             </styleClass>
                         </VBox>
                     </content>

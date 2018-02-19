@@ -1,7 +1,6 @@
-package controllers.connection;
+package controllers;
 
 import com.maschel.roomba.RoombaJSSCSerial;
-import controllers.ModuleController;
 import core.ConnectionType;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
@@ -39,20 +38,6 @@ public class ConnectionModuleController extends ModuleController implements Init
 
     @FXML
     private ListView<String> listView;
-
-    @FXML
-    public void handleTestConnectionButtonAction(ActionEvent event) {
-        if (isConnected()) {
-            Thread thread = new Thread(() -> {
-                getRoomba().leds(true, true, true, true, 100, 100);
-                getRoomba().digitLedsAscii('H', 'E', 'Y', '!');
-                getRoomba().sleep(2500);
-                getRoomba().leds(false, false, false, false, 0, 0);
-                getRoomba().digitLedsAscii(' ', ' ', ' ', ' ');
-            });
-            thread.start();
-        }
-    }
 
     private String extractHostAddress(String item) {
         String[] splitItem = item.split("@");

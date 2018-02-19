@@ -11,12 +11,11 @@ import java.io.IOException;
 
 /* Enum containing all app modules. */
 public enum Module {
-    Drive("/fxml/modules/drive/drive_module.fxml", "Drive Module", true),
-    LED("/fxml/modules/led/led_module.fxml", "LED Module", true),
-    Sensor("/fxml/modules/sensor/sensor_module.fxml", "Sensor Module", true),
-    Song("/fxml/modules/song/song_module.fxml", "Song Module", true),
-    Information("/fxml/modules/information/information_module.fxml", "Information Module", true),
-    Connection("/fxml/modules/connection/connection_module.fxml", "Connection Module", false);
+    Drive("/fxml/modules/drive_module.fxml", "Drive Module", true),
+    LED("/fxml/modules/led_module.fxml", "LED Module", true),
+    Sensor("/fxml/modules/sensor_module.fxml", "Sensor Module", true),
+    Song("/fxml/modules/song_module.fxml", "Song Module", true),
+    Connection("/fxml/modules/connection_module.fxml", "Connection Module", false);
 
     private final static Logger LOGGER = Logger.getLogger(Module.class);
 

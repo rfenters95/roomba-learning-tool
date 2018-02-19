@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefWidth="750.0" styleClass="module-container" stylesheets="@../../../css/Main.css"
-      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.main.MainModuleController">
+      minWidth="-Infinity" prefWidth="750.0" styleClass="module-container" stylesheets="@../../css/Main.css"
+      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.MainModuleController">
     <children>
         <BorderPane>
             <left>
@@ -16,13 +16,6 @@
             <right>
                 <HBox alignment="CENTER" styleClass="module-controls" BorderPane.alignment="CENTER">
                     <children>
-                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                minWidth="-Infinity" mnemonicParsing="false" onAction="#openInformationModule"
-                                prefHeight="50.0" prefWidth="50.0">
-                            <graphic>
-                                <MaterialDesignIconView styleClass="info"/>
-                            </graphic>
-                        </Button>
                         <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#openConnectionModule"
                                 prefHeight="50.0" prefWidth="50.0">

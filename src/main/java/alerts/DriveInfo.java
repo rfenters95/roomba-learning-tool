@@ -2,7 +2,6 @@ package alerts;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -19,17 +18,18 @@ public class DriveInfo extends Alert {
 
         setHeaderText("Drive Information");
 
-        String message = "This command controls Roomba’s drive wheels. "
+        String message = "This module controls Roomba’s drive wheels. "
                 + "The first parameter specifies the average velocity of the drive wheels in millimeters per second (mm/s). "
                 + "While the second parameter specifies the radius is measured from the center of the turning circle to"
                 + "the center of Roomba in millimeters (mm).";
 
-        TextArea textArea = new TextArea(message);
-        textArea.setEditable(false);
-        textArea.setPrefSize(400, 100);
-        textArea.setWrapText(true);
+        Label label = new Label(message);
+        label.getStyleClass().clear();
+        label.getStyleClass().add("normal-font");
+        label.setWrapText(true);
+        label.setPrefWidth(275);
 
-        BorderPane messageRow = new BorderPane(null, null, textArea, null, new Label("Info:"));
+        BorderPane messageRow = new BorderPane(null, null, label, null, new Label("Info:"));
 
         BorderPane velocityRow = new BorderPane(null, null, valueLabel(-500, 500), null, new Label("Velocity Input Range:"));
 

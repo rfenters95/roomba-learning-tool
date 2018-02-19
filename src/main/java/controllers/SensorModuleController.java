@@ -1,6 +1,6 @@
-package controllers.sensor;
+package controllers;
 
-import controllers.ModuleController;
+import alerts.SensorInfo;
 import core.sensor.Sensor;
 import core.sensor.bool.*;
 import core.sensor.signal.*;
@@ -44,7 +44,7 @@ public class SensorModuleController extends ModuleController implements Initiali
 
     @FXML
     void handleInfoButtonActionEvent(ActionEvent event) {
-
+        new SensorInfo().showAndWait();
     }
 
     @FXML

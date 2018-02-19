@@ -5,22 +5,24 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class DriveDirectInfo extends Alert {
+public class LedInfo extends Alert {
 
-    public DriveDirectInfo() {
+    public LedInfo() {
         super(AlertType.INFORMATION);
 
-        setTitle("DriveDirect Information");
+        setTitle("Led Information");
 
         getDialogPane().getStylesheets().add("css/Main.css");
 
         getDialogPane().setPrefWidth(500);
 
-        setHeaderText("DriveDirect Information");
+        setHeaderText("Led Information");
 
-        String message = "This module lets you control the forward and backward motion of Roomba’s drive wheels independently. "
-                + "The first parameter specifies the average velocity of the right wheel in millimeters per second (mm/s). "
-                + "While the second parameter specifies the average velocity of the left wheel in millimeters per second (mm/s).";
+        String message = "This module controls the Roomba's LEDs. " +
+                "This includes the four on/off leds (debris, spot, dock, check robot). " +
+                "As well as the power led which allows users to specify two values from 0 to 255 " +
+                "which determine the power led's color and intensity. ";
+
 
         Label label = new Label(message);
         label.getStyleClass().clear();
@@ -30,11 +32,11 @@ public class DriveDirectInfo extends Alert {
 
         BorderPane messageRow = new BorderPane(null, null, label, null, new Label("Info:"));
 
-        BorderPane velocityRow = new BorderPane(null, null, valueLabel(-500, 500), null, new Label("Right Velocity Input Range:"));
+        BorderPane powerColorRow = new BorderPane(null, null, valueLabel(0, 255), null, new Label("Power Color Input Range:"));
 
-        BorderPane radiusRow = new BorderPane(null, null, valueLabel(-500, 500), null, new Label("Left Velocity Input Range:"));
+        BorderPane powerIntensityRow = new BorderPane(null, null, valueLabel(0, 255), null, new Label("Power Intensity Input Range:"));
 
-        VBox content = new VBox(new Label(), messageRow, new Label(), velocityRow, radiusRow, new Label());
+        VBox content = new VBox(new Label(), messageRow, new Label(), powerColorRow, powerIntensityRow, new Label());
 
         content.getStyleClass().add("dialog-pane-content-vBox");
 

@@ -32,7 +32,7 @@ public class Main extends Application {
 
         // Load FXML
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/modules/main/main_module.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/modules/main_module.fxml"));
         Parent root = loader.load();
         LOGGER.trace("FXMLLoader has loaded main_module.fxml");
 
