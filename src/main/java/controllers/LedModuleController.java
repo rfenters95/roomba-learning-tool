@@ -1,6 +1,5 @@
 package controllers;
 
-import alerts.LedInfo;
 import core.NumericTextFieldValidator;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
@@ -57,11 +56,6 @@ public class LedModuleController extends ModuleController implements Initializab
             toggleNodeStatus(playIcon, "stop", "play");
         }
         playing = !playing;
-    }
-
-    @FXML
-    public void handleInfoButtonAction(ActionEvent event) {
-        new LedInfo().showAndWait();
     }
 
     @Override

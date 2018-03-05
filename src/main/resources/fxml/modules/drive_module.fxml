@@ -15,13 +15,6 @@
                 <HBox alignment="CENTER" styleClass="module-controls" BorderPane.alignment="CENTER">
                     <children>
                         <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleInfoButtonAction"
-                                prefHeight="50.0" prefWidth="50.0">
-                            <graphic>
-                                <MaterialDesignIconView fill="#fffd8c" glyphName="INFORMATION_OUTLINE" size="42"/>
-                            </graphic>
-                        </Button>
-                        <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePlayButtonAction"
                                 prefHeight="50.0" prefWidth="50.0">
                             <graphic>

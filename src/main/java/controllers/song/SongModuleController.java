@@ -100,11 +100,6 @@ public class SongModuleController extends ModuleController implements Initializa
     }
 
     @FXML
-    public void handleInfoButtonAction(ActionEvent event) {
-
-    }
-
-    @FXML
     public void handleLoadSongButtonAction(ActionEvent event) {
         Gson gson = new Gson();
         FileChooser fileChooser = new FileChooser();

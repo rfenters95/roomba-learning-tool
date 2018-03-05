@@ -1,7 +1,5 @@
 package controllers;
 
-import alerts.DriveDirectInfo;
-import alerts.DriveInfo;
 import core.NumericTextFieldValidator;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
@@ -62,19 +60,6 @@ public class DriveModuleController extends ModuleController implements Initializ
             default:
                 break;
         }
-    }
-
-    @FXML
-    private void handleInfoButtonAction(ActionEvent event) {
-
-        DriveCommand driveCommand = driveCommandComboBox.getValue();
-
-        if (driveCommand == DriveCommand.Drive) {
-            new DriveInfo().showAndWait();
-        } else {
-            new DriveDirectInfo().showAndWait();
-        }
-
     }
 
     private boolean isDriveValidInput() {

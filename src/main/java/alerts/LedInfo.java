@@ -23,7 +23,6 @@ public class LedInfo extends Alert {
                 "As well as the power led which allows users to specify two values from 0 to 255 " +
                 "which determine the power led's color and intensity. ";
 
-
         Label label = new Label(message);
         label.getStyleClass().clear();
         label.getStyleClass().add("normal-font");
